@@ -57,6 +57,10 @@ import org.openjdk.jmh.infra.Blackhole;
  *
  * <p>Measures driver-side latency of latestOffset() as table history grows.
  *
+ * <p><b>IMPORTANT</b>: This benchmark requires AsyncSparkMicroBatchPlanner and
+ * SyncSparkMicroBatchPlanner classes from the async-planner feature branch. It will not compile
+ * on the main branch. Results are provided in Benchmark/PRODUCTION_RESULTS.md.
+ *
  * <p>HYPOTHESIS:
  *
  * <ul>
@@ -73,6 +77,13 @@ import org.openjdk.jmh.infra.Blackhole;
  *   <li>Sync: Driver thread scans N snapshots on every call.
  *   <li>Measure: latestOffset() latency.
  *   <li>Production scale: 500-1000 snapshots test real-world streaming tables.
+ * </ul>
+ *
+ * <p>TRADE-OFFS:
+ *
+ * <ul>
+ *   <li><b>Benefit</b>: Driver blocking reduced from 336ms to 7µs at 1000 snapshots
+ *   <li><b>Cost</b>: Detection latency bounded by polling interval (~1s vs immediate)
  * </ul>
  */
 @State(Scope.Benchmark)
@@ -117,7 +128,7 @@ public class MicroBatchPlannerBenchmark {
         // ignore
       }
     }
-    catalog.dropTable(TableIdentifier.of("default", "honest_bench"), true);
+    catalog.dropTable(TableIdentifier.of("default", "micro_batch_planner_bench"), true);
     spark.stop();
   }
 
@@ -143,7 +154,10 @@ public class MicroBatchPlannerBenchmark {
 
     if (asyncEnabled) {
       planner = new AsyncSparkMicroBatchPlanner(table, conf, startOffset, null, null);
-      System.out.println("Warming up Async Queue...");
+      // CAVEAT: This 5s warmup allows background thread to pre-fill the queue
+      // before measurement begins. This measures steady-state behavior, not
+      // cold-start latency. Sync planner has no equivalent warmup period.
+      System.out.println("Warming up Async Queue (5s)...");
       Thread.sleep(5000);
     } else {
       planner = new SyncSparkMicroBatchPlanner(table, conf, null);
@@ -155,7 +169,7 @@ public class MicroBatchPlannerBenchmark {
     String warehousePath = conf.get("hadoop.tmp.dir") + "/warehouse-" + UUID.randomUUID();
     this.catalog = new HadoopCatalog(conf, warehousePath);
     this.spark = SparkSession.builder().master("local[*]").getOrCreate();
-    this.table = catalog.createTable(TableIdentifier.of("default", "honest_bench"), SCHEMA);
+    this.table = catalog.createTable(TableIdentifier.of("default", "micro_batch_planner_bench"), SCHEMA);
   }
 
   private void populateHistory(int count) {

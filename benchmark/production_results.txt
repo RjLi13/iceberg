@@ -8,7 +8,7 @@
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = true, numSnapshots = 10)
 
 # Run progress: 0.00% complete, ETA 00:02:30
@@ -30,7 +30,7 @@ Iteration   9: 8.003 us/op
 Iteration  10: 7.088 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   7.304 ±(99.9%) 1.435 us/op [Average]
   (min, avg, max) = (5.905, 7.304, 8.688), stdev = 0.949
   CI (99.9%): [5.869, 8.739] (assumes normal distribution)
@@ -46,7 +46,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = true, numSnapshots = 50)
 
 # Run progress: 10.00% complete, ETA 00:03:31
@@ -68,7 +68,7 @@ Iteration   9: 6.943 us/op
 Iteration  10: 6.964 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   7.023 ±(99.9%) 0.219 us/op [Average]
   (min, avg, max) = (6.895, 7.023, 7.412), stdev = 0.145
   CI (99.9%): [6.804, 7.242] (assumes normal distribution)
@@ -84,7 +84,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = true, numSnapshots = 200)
 
 # Run progress: 20.00% complete, ETA 00:03:23
@@ -106,7 +106,7 @@ Iteration   9: 6.651 us/op
 Iteration  10: 6.745 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   6.738 ±(99.9%) 0.247 us/op [Average]
   (min, avg, max) = (6.616, 6.738, 7.170), stdev = 0.163
   CI (99.9%): [6.491, 6.985] (assumes normal distribution)
@@ -122,7 +122,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = true, numSnapshots = 500)
 
 # Run progress: 30.00% complete, ETA 00:03:35
@@ -144,7 +144,7 @@ Iteration   9: 6.617 us/op
 Iteration  10: 6.665 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   6.868 ±(99.9%) 0.336 us/op [Average]
   (min, avg, max) = (6.617, 6.868, 7.253), stdev = 0.222
   CI (99.9%): [6.532, 7.204] (assumes normal distribution)
@@ -160,7 +160,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = true, numSnapshots = 1000)
 
 # Run progress: 40.00% complete, ETA 00:04:00
@@ -182,7 +182,7 @@ Iteration   9: 7.170 us/op
 Iteration  10: 7.400 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   7.273 ±(99.9%) 0.166 us/op [Average]
   (min, avg, max) = (7.143, 7.273, 7.505), stdev = 0.110
   CI (99.9%): [7.106, 7.439] (assumes normal distribution)
@@ -198,7 +198,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = false, numSnapshots = 10)
 
 # Run progress: 50.00% complete, ETA 00:04:32
@@ -220,7 +220,7 @@ Iteration   9: 2312.575 us/op
 Iteration  10: 2299.370 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   2474.619 ±(99.9%) 357.002 us/op [Average]
   (min, avg, max) = (2275.621, 2474.619, 2915.958), stdev = 236.135
   CI (99.9%): [2117.617, 2831.621] (assumes normal distribution)
@@ -236,7 +236,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = false, numSnapshots = 50)
 
 # Run progress: 60.00% complete, ETA 00:03:14
@@ -258,7 +258,7 @@ Iteration   9: 10202.023 us/op
 Iteration  10: 10235.226 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   10282.074 ±(99.9%) 218.005 us/op [Average]
   (min, avg, max) = (10179.113, 10282.074, 10646.935), stdev = 144.197
   CI (99.9%): [10064.068, 10500.079] (assumes normal distribution)
@@ -274,7 +274,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = false, numSnapshots = 200)
 
 # Run progress: 70.00% complete, ETA 00:02:14
@@ -296,7 +296,7 @@ Iteration   9: 56105.780 us/op
 Iteration  10: 55997.285 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   56992.438 ±(99.9%) 2496.601 us/op [Average]
   (min, avg, max) = (55572.046, 56992.438, 61359.017), stdev = 1651.347
   CI (99.9%): [54495.837, 59489.039] (assumes normal distribution)
@@ -312,7 +312,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = false, numSnapshots = 500)
 
 # Run progress: 80.00% complete, ETA 00:01:27
@@ -334,7 +334,7 @@ Iteration   9: 119872.722 us/op
 Iteration  10: 124618.560 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   126576.017 ±(99.9%) 7522.388 us/op [Average]
   (min, avg, max) = (119872.722, 126576.017, 133708.438), stdev = 4975.594
   CI (99.9%): [119053.629, 134098.405] (assumes normal distribution)
@@ -350,7 +350,7 @@ Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningL
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
-# Benchmark: org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency
+# Benchmark: org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency
 # Parameters: (asyncEnabled = false, numSnapshots = 1000)
 
 # Run progress: 90.00% complete, ETA 00:00:45
@@ -372,7 +372,7 @@ Iteration   9: 331897.552 us/op
 Iteration  10: 330681.281 us/op
 
 
-Result "org.apache.iceberg.spark.source.HonestPlanningBenchmark.measurePlanningLatency":
+Result "org.apache.iceberg.spark.source.MicroBatchPlannerBenchmark.measurePlanningLatency":
   335646.779 ±(99.9%) 16715.313 us/op [Average]
   (min, avg, max) = (327631.271, 335646.779, 359534.778), stdev = 11056.144
   CI (99.9%): [318931.466, 352362.092] (assumes normal distribution)
@@ -393,15 +393,15 @@ different JVMs are already problematic, the performance difference caused by dif
 modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
 
 Benchmark                                       (asyncEnabled)  (numSnapshots)  Mode  Cnt       Score       Error  Units
-HonestPlanningBenchmark.measurePlanningLatency            true              10  avgt   10       7.304 ±     1.435  us/op
-HonestPlanningBenchmark.measurePlanningLatency            true              50  avgt   10       7.023 ±     0.219  us/op
-HonestPlanningBenchmark.measurePlanningLatency            true             200  avgt   10       6.738 ±     0.247  us/op
-HonestPlanningBenchmark.measurePlanningLatency            true             500  avgt   10       6.868 ±     0.336  us/op
-HonestPlanningBenchmark.measurePlanningLatency            true            1000  avgt   10       7.273 ±     0.166  us/op
-HonestPlanningBenchmark.measurePlanningLatency           false              10  avgt   10    2474.619 ±   357.002  us/op
-HonestPlanningBenchmark.measurePlanningLatency           false              50  avgt   10   10282.074 ±   218.005  us/op
-HonestPlanningBenchmark.measurePlanningLatency           false             200  avgt   10   56992.438 ±  2496.601  us/op
-HonestPlanningBenchmark.measurePlanningLatency           false             500  avgt   10  126576.017 ±  7522.388  us/op
-HonestPlanningBenchmark.measurePlanningLatency           false            1000  avgt   10  335646.779 ± 16715.313  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency            true              10  avgt   10       7.304 ±     1.435  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency            true              50  avgt   10       7.023 ±     0.219  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency            true             200  avgt   10       6.738 ±     0.247  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency            true             500  avgt   10       6.868 ±     0.336  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency            true            1000  avgt   10       7.273 ±     0.166  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency           false              10  avgt   10    2474.619 ±   357.002  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency           false              50  avgt   10   10282.074 ±   218.005  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency           false             200  avgt   10   56992.438 ±  2496.601  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency           false             500  avgt   10  126576.017 ±  7522.388  us/op
+MicroBatchPlannerBenchmark.measurePlanningLatency           false            1000  avgt   10  335646.779 ± 16715.313  us/op
 
 Benchmark result is saved to /Users/ruijingl/iceberg/spark/v4.1/spark/build/reports/jmh/results.json
