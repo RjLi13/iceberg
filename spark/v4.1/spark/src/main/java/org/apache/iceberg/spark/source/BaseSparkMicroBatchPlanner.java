@@ -80,7 +80,7 @@ class BaseSparkMicroBatchPlanner implements SparkMicroBatchPlanner {
     List<FileScanTask> fileScanTasks = Lists.newArrayList();
     StreamingOffset batchStartOffset =
         StreamingOffset.START_OFFSET.equals(startOffset)
-            ? determineStartingOffset(table, readConf.streamFromTimestamp())
+            ? MicroBatchUtils.determineStartingOffset(table, readConf.streamFromTimestamp())
             : startOffset;
 
     StreamingOffset currentOffset = null;
@@ -150,7 +150,7 @@ class BaseSparkMicroBatchPlanner implements SparkMicroBatchPlanner {
     StreamingOffset startingOffset = startOffset;
 
     if (startOffset.equals(StreamingOffset.START_OFFSET)) {
-      startingOffset = determineStartingOffset(table, readConf.streamFromTimestamp());
+      startingOffset = MicroBatchUtils.determineStartingOffset(table, readConf.streamFromTimestamp());
     }
 
     Snapshot curSnapshot = table.snapshot(startingOffset.snapshotId());
@@ -278,33 +278,6 @@ class BaseSparkMicroBatchPlanner implements SparkMicroBatchPlanner {
     }
   }
 
-  protected static StreamingOffset determineStartingOffset(Table table, Long fromTimestamp) {
-    if (table.currentSnapshot() == null) {
-      return StreamingOffset.START_OFFSET;
-    }
-
-    if (fromTimestamp == null) {
-      // match existing behavior and start from the oldest snapshot
-      return new StreamingOffset(SnapshotUtil.oldestAncestor(table).snapshotId(), 0, false);
-    }
-
-    if (table.currentSnapshot().timestampMillis() < fromTimestamp) {
-      return StreamingOffset.START_OFFSET;
-    }
-
-    try {
-      Snapshot snapshot = SnapshotUtil.oldestAncestorAfter(table, fromTimestamp);
-      if (snapshot != null) {
-        return new StreamingOffset(snapshot.snapshotId(), 0, false);
-      } else {
-        return StreamingOffset.START_OFFSET;
-      }
-    } catch (IllegalStateException e) {
-      // could not determine the first snapshot after the timestamp. use the oldest ancestor instead
-      return new StreamingOffset(SnapshotUtil.oldestAncestor(table).snapshotId(), 0, false);
-    }
-  }
-
   protected static int getMaxFiles(ReadLimit readLimit) {
     if (readLimit instanceof ReadMaxFiles) {
       return ((ReadMaxFiles) readLimit).maxFiles();
@@ -359,7 +332,7 @@ class BaseSparkMicroBatchPlanner implements SparkMicroBatchPlanner {
     // if there were no valid snapshots, check for an initialOffset again
     if (curSnapshot == null) {
       StreamingOffset startingOffset =
-          determineStartingOffset(table, readConf.streamFromTimestamp());
+          MicroBatchUtils.determineStartingOffset(table, readConf.streamFromTimestamp());
       LOG.debug("determineStartingOffset picked startingOffset: {}", startingOffset);
       if (StreamingOffset.START_OFFSET.equals(startingOffset)) {
         return null;

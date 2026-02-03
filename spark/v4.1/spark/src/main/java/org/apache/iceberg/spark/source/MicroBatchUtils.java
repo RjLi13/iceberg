@@ -23,6 +23,7 @@ import org.apache.iceberg.SnapshotSummary;
 import org.apache.iceberg.Table;
 import org.apache.iceberg.relocated.com.google.common.collect.Iterables;
 import org.apache.iceberg.util.PropertyUtil;
+import org.apache.iceberg.util.SnapshotUtil;
 
 /** Utility methods for micro-batch planning. */
 class MicroBatchUtils {
@@ -37,5 +38,32 @@ class MicroBatchUtils {
     return addedFilesCount == -1
         ? Iterables.size(snapshot.addedDataFiles(table.io()))
         : addedFilesCount;
+  }
+
+  static StreamingOffset determineStartingOffset(Table table, Long fromTimestamp) {
+    if (table.currentSnapshot() == null) {
+      return StreamingOffset.START_OFFSET;
+    }
+
+    if (fromTimestamp == null) {
+      // match existing behavior and start from the oldest snapshot
+      return new StreamingOffset(SnapshotUtil.oldestAncestor(table).snapshotId(), 0, false);
+    }
+
+    if (table.currentSnapshot().timestampMillis() < fromTimestamp) {
+      return StreamingOffset.START_OFFSET;
+    }
+
+    try {
+      Snapshot snapshot = SnapshotUtil.oldestAncestorAfter(table, fromTimestamp);
+      if (snapshot != null) {
+        return new StreamingOffset(snapshot.snapshotId(), 0, false);
+      } else {
+        return StreamingOffset.START_OFFSET;
+      }
+    } catch (IllegalStateException e) {
+      // could not determine the first snapshot after the timestamp. use the oldest ancestor instead
+      return new StreamingOffset(SnapshotUtil.oldestAncestor(table).snapshotId(), 0, false);
+    }
   }
 }

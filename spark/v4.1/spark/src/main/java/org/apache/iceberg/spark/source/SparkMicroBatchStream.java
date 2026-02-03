@@ -276,8 +276,7 @@ public class SparkMicroBatchStream implements MicroBatchStream, SupportsTriggerA
       }
 
       table.refresh();
-      StreamingOffset offset =
-          BaseSparkMicroBatchPlanner.determineStartingOffset(table, fromTimestamp);
+      StreamingOffset offset = MicroBatchUtils.determineStartingOffset(table, fromTimestamp);
 
       OutputFile outputFile = io.newOutputFile(initialOffsetLocation);
       writeOffset(offset, outputFile);
