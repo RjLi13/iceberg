@@ -1035,7 +1035,6 @@ public final class TestStructuredStreamingRead3 extends CatalogTestBase {
         .foreachBatch(
             (VoidFunction2<Dataset<Row>, Long>)
                 (dataset, batchId) -> {
-                  microBatches.getAndIncrement();
                   syncList.add(dataset.count());
                 })
         .start()
