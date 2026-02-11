@@ -775,6 +775,7 @@ public final class TestStructuredStreamingRead3 extends CatalogTestBase {
     appendDataAsMultipleSnapshots(expected);
 
     makeRewriteDataFiles();
+
     assertMicroBatchRecordSizes(
         ImmutableMap.of(SparkReadOptions.STREAMING_MAX_FILES_PER_MICRO_BATCH, "1"),
         List.of(1L, 2L, 1L, 1L, 1L, 1L));
